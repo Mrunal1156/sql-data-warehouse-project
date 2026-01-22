@@ -20,27 +20,29 @@ WARNING:
 */
 
 USE master;
-  GO
+GO
 
-  --Drop and recreate the 'DataWareHouse' database
-  IF EXITS (SELECT 1 FROM sys.databases WHERE name='DataWareHouse')
-  BEGIN
-    ALTER DATABASE DataWareHouse SET SINGLE _USER WITH ROLLBACK IMMEDIATE;
+-- Drop and recreate the 'DataWareHouse' database
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWareHouse')
+BEGIN
+    ALTER DATABASE DataWareHouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
     DROP DATABASE DataWareHouse;
-  END;
-  GO
+END;
+GO
 
---Create the 'DataWareHouse' databae
-  CREATE DATABASE DataWareHouse
-  GO
+-- Create the 'DataWareHouse' database
+CREATE DATABASE DataWareHouse;
+GO
 
-USE  DataWareHouse
+USE DataWareHouse;
+GO
 
---Create Schemas
-  CREATE SCHEMA bronze;
-  GO
-  CREATE SCHEMA silver;
-  GO
-  CREATE SCHEMA gold;
+-- Create Schemas
+CREATE SCHEMA bronze;
+GO
 
+CREATE SCHEMA silver;
+GO
 
+CREATE SCHEMA gold;
+GO
